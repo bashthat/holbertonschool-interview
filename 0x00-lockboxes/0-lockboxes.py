@@ -1,26 +1,16 @@
 #!/usr/bin/python3
-'''
-a list of lists identifying whether all the boxes can be opened which returns true if so, and false if otherwise.
-'''
-def canUnlockAll(boxes)
-# keys available
 
-keys = [0]
-# looking through the list
+'''Can match boxes and keys makes true, else false'''
 
-for x in keys:
-  for k in boxes[x]:
-    if k not in keys and k < len(boxes):
-      keys.append(k)
+def canUnlockAll(boxes):
+    visited = set()
+    visited.add(0)
+    stack = [0]
+    while stack:
+        box = stack.pop()
+        for key in boxes[box]:
+            if key not in visited:
+                visited.add(key)
+                stack.append(key)
+    return len(visited) == len(boxes)
 
-# returning false if all the keys do not match the 
-
-xyz = 0
-while xyz < len(boxes):
-  if xyz not in keys:
-    return False
-
-    xyz += 1
-
-
-return True

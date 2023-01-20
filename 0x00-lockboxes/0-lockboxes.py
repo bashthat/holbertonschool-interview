@@ -1,16 +1,16 @@
 #!/usr/bin/python3
 
-'''Can match boxes and keys makes true, else false'''
-
 def canUnlockAll(boxes):
-    visited = set()
-    visited.add(0)
-    stack = [0]
-    while stack:
-        box = stack.pop()
-        for key in boxes[box]:
-            if key not in visited:
-                visited.add(key)
-                stack.append(key)
-    return len(visited) == len(boxes)
-
+    ''' does the list of lists have matching key pairs to boxes? '''
+    if len(boxes) == 0:
+        return False
+    if len(boxes) == 1:
+        return True
+    keys = [0]
+    for key in keys:
+        for box in boxes[key]:
+            if box not in keys and box < len(boxes):
+                keys.append(box)
+    if len(keys) == len(boxes):
+        return True
+    return False

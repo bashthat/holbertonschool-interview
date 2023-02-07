@@ -1,0 +1,1 @@
+https://programs.programmingoneonone.com/2021/03/hackerrank-mini-max-solution.html#:~:text=HackerRank%20Mini-Max%20Sum%20problem%20solution%201%20Example%20arr,arr%20%5Bi%5D%20%3C%3D%2010%5E9%206%20Output%20Format%20

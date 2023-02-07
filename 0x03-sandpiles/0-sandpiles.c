@@ -13,12 +13,7 @@
 void sandpiles_sum(int grid1[3][3], int grid2[3][3])
 {
     
-    // 1. Add the two grids
-    // 2. Check if the grid is stable
-    // 3. If not, topple the grid
-    // 4. Print the grid
-    // 5. Repeat
-
+    
     int i, j, unstable = 0;
 
     for (i = 0; i < 3; i++)

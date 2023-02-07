@@ -2,14 +2,12 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-/**
- * sandpiles_sum - sandpiling grids
- * @grid1: prints every topppling round
- * @grid2: second grid for sandpile
- * Return: NULL
- * 
-*/
 
+/**
+ * print_grid - Print 3x3 grid
+ * @grid: 3x3 grid
+ * Return: NULL
+*/
 
 static void print_grid(int grid[3][3])
 {
@@ -27,6 +25,14 @@ static void print_grid(int grid[3][3])
     }
 }
 
+
+/**
+ * sandpiles_sum - sandpiling grids
+ * @grid1: prints every topppling round
+ * @grid2: second grid for sandpile
+ * Return: NULL
+ * 
+*/
 void sandpiles_sum(int grid1[3][3], int grid2[3][3])
 {
     

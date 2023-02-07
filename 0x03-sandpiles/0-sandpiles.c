@@ -1,7 +1,8 @@
 #include "sandpiles.h"
 #include <stdio.h>
 #include <stdlib.h>
-
+#include <stdio.h>
+#include <string.h>
 
 /**
  * print_grid - Print 3x3 grid
@@ -9,7 +10,7 @@
  * Return: NULL
 */
 
-static void print_grid(int grid[3][3])
+void print_grid(int grid[3][3])
 {
     int i, j;
 

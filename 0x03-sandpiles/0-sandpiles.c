@@ -58,34 +58,6 @@ static void print_grid(int grid[3][3])
 }
 
 /**
- * main - Entry point
- *
- * Return: EXIT_SUCCESS or EXIT_FAILURE
- */
-int main(void)
-{
-    int grid1[3][3] = {
-        {3, 3, 3},
-        {3, 3, 3},
-        {3, 3, 3}
-    };
-    int grid2[3][3] = {
-        {1, 3, 1},
-        {3, 3, 3},
-        {1, 3, 1}
-    };
-
-    print_grid_sum(grid1, grid2);
-
-    sandpiles_sum(grid1, grid2);
-
-    printf("=\n");
-    print_grid(grid1);
-
-    return (EXIT_SUCCESS);
-}
-
-/**
  * print_grid - Print 3x3 grid
  * @grid: 3x3 grid
  * Return: NULL

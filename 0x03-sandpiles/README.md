@@ -27,3 +27,4 @@ Repeat steps 2 and 3 until all cells are stable: Keep repeating the check for in
 
 Stable sandpile: When all cells are stable, the sandpile is considered to be in its final state.
 =============================================================
+https://www.youtube.com/watch?v=diGjw5tghYU --> coding explanation.

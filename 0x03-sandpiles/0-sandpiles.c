@@ -5,7 +5,7 @@
  * @grid: the grid to print
  */
 
-void print_grid(int grid[3][3])
+static void print_grid(int grid[3][3])
 {
     int i, j;
 

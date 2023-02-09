@@ -58,6 +58,25 @@ int is_stable(int grid[3][3])
 }
 
 /**
+ * copy_grid - copies a grid
+ * @grid1: the grid to copy to
+ * @grid2: the grid to copy from
+ */
+
+void copy_grid(int grid1[3][3], int grid2[3][3])
+{
+    int i, j;
+
+    for (i = 0; i < 3; i++)
+    {
+        for (j = 0; j < 3; j++)
+        {
+            grid1[i][j] = grid2[i][j];
+        }
+    }
+}
+
+/**
  * topple - topples a grid
  * @grid: the grid to topple
  */

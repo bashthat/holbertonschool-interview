@@ -31,11 +31,8 @@ int grid_copy(int grid1[3][3], int grid2[3][3])
         for (j = 0; j < 3; j++)
         {
             grid2[i][j] = grid1[i][j];
-            if (grid2[i][j] > 3)
-                unstable = 1;
         }
-    }
-    return (unstable);
+    }       return (unstable);
 }
 
 /**
@@ -47,24 +44,39 @@ int grid_copy(int grid1[3][3], int grid2[3][3])
 void topple(int grid[3][3])
 {
     int i, j;
+    int grid2[3][3] = {{0, 0, 0}, {0, 0, 0}, {0, 0, 0}};
+
+    grid_copy(grid, grid2);
+    for (i = 0; i < 3; i++)
+    {
+        for (j = 0; j < 3; j++)
+        {
+            if (grid2[i][j] > 3)
+            {
+                grid[i][j] -= 4;
+                if (i - 1 >= 0)
+                    grid[i - 1][j] += 1;
+                if (i + 1 < 3)
+                    grid[i + 1][j] += 1;
+                if (j - 1 >= 0)
+                    grid[i][j - 1] += 1;
+                if (j + 1 < 3)
+                    grid[i][j + 1] += 1;
+            }
+         }
+    }
     for (i = 0; i < 3; i++)
     {
         for (j = 0; j < 3; j++)
         {
             if (grid[i][j] > 3)
             {
-                grid[i][j] -= 4;
-                if (i + 1 < 3)
-                    grid[i + 1][j] += 1;
-                if (j + 1 < 3)
-                    grid[i][j + 1] += 1;
-                if (i - 1 >= 0)
-                    grid[i - 1][j] += 1;
-                if (j - 1 >= 0)
-                    grid[i][j - 1] += 1;
+                topple(grid);
+                break;
             }
         }
     }
+
 }
 
 /**
@@ -77,20 +89,19 @@ void topple(int grid[3][3])
 void sandpiles_sum(int grid1[3][3], int grid2[3][3])
 {
     int i, j, unstable = 1;
-    int grid3[3][3];
-
-    while (unstable)
+    
+    for (i = 0; i < 3; i++)
     {
-        for (i = 0; i < 3; i++)
+        for (j = 0; j < 3; j++)
         {
-            for (j = 0; j < 3; j++)
-            {
-                grid3[i][j] = grid1[i][j] + grid2[i][j];
-            }
+            grid1[i][j] += grid2[i][j];
+            if (grid1[i][j] > 3)
+                unstable = 1;
         }
-        unstable = grid_copy(grid3, grid1);
-        if (unstable)
-            print_grid(grid1);
+    }
+    if (unstable == 1)
+    {
+        print_grid(grid1);
         topple(grid1);
     }
 }

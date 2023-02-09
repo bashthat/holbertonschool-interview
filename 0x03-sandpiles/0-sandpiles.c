@@ -18,6 +18,12 @@ static void print_grid(int grid[3][3]) {
   }
 }
 
+/**
+ * compute_sum - computes the sum of two grids
+ * @grid1: the first grid
+ * @grid2: the second grid
+ */
+
 void compute_sum(int grid1[3][3], int grid2[3][3]) {
   int i, j;
 

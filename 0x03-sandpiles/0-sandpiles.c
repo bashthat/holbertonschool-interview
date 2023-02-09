@@ -1,7 +1,5 @@
 #include "sandpiles.h"
 
-
-
 void print_grid(int grid[3][3]) {
   for (int i = 0; i < 3; i++) {
     for (int j = 0; j < 3; j++) {
@@ -11,50 +9,52 @@ void print_grid(int grid[3][3]) {
   }
 }
 
-void topple(int grid[3][3]) {
-  int copy[3][3];
-  for (int i = 0; i < 3; i++) {
-    for (int j = 0; j < 3; j++) {
-      copy[i][j] = grid[i][j];
-    }
-  }
-  for (int i = 0; i < 3; i++) {
-    for (int j = 0; j < 3; j++) {
-      if (grid[i][j] > 3) {
-        copy[i][j] -= 4;
-        if (i + 1 < 3) copy[i + 1][j] += 1;
-        if (j + 1 < 3) copy[i][j + 1] += 1;
-        if (i - 1 >= 0) copy[i - 1][j] += 1;
-        if (j - 1 >= 0) copy[i][j - 1] += 1;
-      }
-    }
-  }
-  for (int i = 0; i < 3; i++) {
-    for (int j = 0; j < 3; j++) {
-      grid[i][j] = copy[i][j];
-    }
-  }
-}
+/**
+ * sandpiles_sum - computes the sum of two sandpiles
+ * @grid1: first sandpile
+ * @grid2: second sandpile
+ * Return: void
+ */
 
-void sandpiles_sum(int grid1[3][3], int grid2[3][3]) {
-  for (int i = 0; i < 3; i++) {
-    for (int j = 0; j < 3; j++) {
-      grid1[i][j] += grid2[i][j];
-    }
-  }
-  while (1) {
-    int unstable = 0;
-    for (int i = 0; i < 3; i++) {
-      for (int j = 0; j < 3; j++) {
-        if (grid1[i][j] > 3) {
-          unstable = 1;
-          break;
+void sandpiles_sum(int grid1[3][3], int grid2[3][3])
+{
+    int i, j, unstable = 1;
+    
+    while (unstable)
+    {
+        unstable = 0;
+        for (i = 0; i < 3; i++)
+        {
+        for (j = 0; j < 3; j++)
+        {
+            grid1[i][j] += grid2[i][j];
+            if (grid1[i][j] > 3)
+            unstable = 1;
         }
-      }
+        }
+        if (unstable)
+        {
+        printf("=\n");
+        print_grid(grid1);
+        for (i = 0; i < 3; i++)
+        {
+            for (j = 0; j < 3; j++)
+            {
+            if (grid1[i][j] > 3)
+            {
+                grid1[i][j] -= 4;
+                if (i + 1 < 3)
+                grid1[i + 1][j] += 1;
+                if (j + 1 < 3)
+                grid1[i][j + 1] += 1;
+                if (i - 1 >= 0)
+                grid1[i - 1][j] += 1;
+                if (j - 1 >= 0)
+                grid1[i][j - 1] += 1;
+            }
+            }
+        }
+        }
     }
-    if (!unstable) break;
-    printf("=\n");
-    print_grid(grid1);
-    topple(grid1);
-  }
+
 }

@@ -4,24 +4,25 @@
  * @grid: the grid to print
  */
 
-static void print_grid(int grid[3][3]) {
-  int i, j;
-
-  printf("=\n");
-
-  for (i = 0; i < 3; i++) {
-    for (j = 0; j < 3; j++) {
-      if (j) printf(" ");
-      printf("%d", grid[i][j]);
+static void print_grid(int grid[3][3])
+{
+    int i, j;
+    printf("=\n");
+    for (i = 0; i < 3; i++)
+    {
+        for (j = 0; j < 3; j++)
+        {
+            if (j) printf(" ");
+            printf("%d", grid[i][j]);
+        }
+        printf("\n");
     }
-    printf("\n");
-  }
 }
 
-void compute_sum(int grid1[3][3], int grid2[3][3]) {
-  int i, j;
-
-  for (i = 0; i < 3; i++) {
+void compute_sum(int grid1[3][3], int grid2[3][3])
+{
+    int i, j;
+    for (i = 0; i < 3; i++) {
     for (j = 0; j < 3; j++) {
       grid1[i][j] += grid2[i][j];
     }

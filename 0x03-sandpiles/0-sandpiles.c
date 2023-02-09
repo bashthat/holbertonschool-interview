@@ -36,6 +36,12 @@ void sandpiles_sum(int grid1[3][3], int grid2[3][3])
             grid3[i][j] = grid1[i][j] + grid2[i][j];
         }
     }
+    if (unstable == 1)
+    {
+        printf("=\n");
+        print_grid(grid3);
+    }
+    
     if (grid3[0][0] > 3 || grid3[0][1] > 3 || grid3[0][2] > 3 || grid3[1][0] > 3 || grid3[1][1] > 3 || grid3[1][2] > 3 || grid3[2][0] > 3 || grid3[2][1] > 3 || grid3[2][2] > 3)
     {
         printf("=\n");

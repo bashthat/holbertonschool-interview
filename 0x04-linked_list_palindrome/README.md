@@ -1,0 +1,1 @@
+It is a simple readme for realizing the outsourced development of a palindrome linked list function. lets solve this!

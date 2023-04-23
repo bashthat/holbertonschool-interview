@@ -8,4 +8,4 @@
 /*deep blue sea*/
 void menger(int level);
 
-#endif // MENGER_H
+#endif /* MENGER_H */

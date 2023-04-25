@@ -14,7 +14,7 @@
 
 int slide_line(int *line, size_t size, int direction)
 {
-    if (!line || (direction != SLIDE_LEFT && direction != SLIDE_RIGHT))
+    if (!line || (direction != SLIDE_LEFT && direction != SLIDE_RIGHT) || size < 1)
         return (0);
     if (direction == SLIDE_LEFT)
         mergeL(line, size);

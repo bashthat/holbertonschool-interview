@@ -35,19 +35,27 @@ void mergeL(int *line, size_t size)
 
     while (xyz <= q)
     {
-        if (line[xyz] == line[xyz - 1])
+        if (line[xyz] == 0)
         {
-            line[x] = line[xyz] + line[xyz - 1];
-            if (line[x] != 0)
+            xyz++;
+            continue;
+        }
+        else
+        {
+            if (line[x] == line[xyz])
+            {
+                line[x] = line[x] + line[xyz];
+                line[xyz] = 0;
                 x++;
-            line[xyz] = 0;
+            }
+            else if (line[x] == 0)
+            {
+                line[x] = line[xyz];
+                line[xyz] = 0;
+            }
+            else
+                x++;
         }
-        else if (line[xyz] != 0)
-        {
-            line[x] = line[xyz];
-            x++;
-        }
-        xyz++;
     }
 }
 /**
@@ -58,22 +66,30 @@ void mergeL(int *line, size_t size)
 
 void mergeR(int *line, size_t size)
 {
-    int xyz = size - 2, x = size - 1, q = 0;
+    int xyz = size - 2, x = size - 1;
 
     while (xyz >= 0)
     {
-        if (line[xyz] == line[xyz + 1])
+        if (line[xyz] == 0)
         {
-            line[x + 1] = line[xyz] + line[xyz + 1];
-            if (line[x + 1] != 0)
-                q++;
-            line[xyz] = 0;
+            xyz--;
+            continue;
         }
-        else if (line[xyz] != 0)
+        else
         {
-            line[x] = line[xyz];
-            x--;
+            if (line[x] == line[xyz])
+            {
+                line[x] = line[x] + line[xyz];
+                line[xyz] = 0;
+                x--;
+            }
+            else if (line[x] == 0)
+            {
+                line[x] = line[xyz];
+                line[xyz] = 0;
+            }
+            else
+                x--;
         }
-        xyz--;
     }
 }

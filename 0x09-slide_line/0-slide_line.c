@@ -33,13 +33,13 @@ void mergeL(int *line, size_t size)
 {
     int xyz = 1, x = 0, q = size -1;
 
-    while (xyz < (int)size)
+    while (xyz <= q)
     {
         if (line[xyz] == line[xyz - 1])
         {
-            line[x - 1] = line[xyz] + line[xyz - 1];
-            if (line[x - 1] != 0)
-                q--;
+            line[x] = line[xyz] + line[xyz - 1];
+            if (line[x] != 0)
+                x++;
             line[xyz] = 0;
         }
         else if (line[xyz] != 0)
@@ -49,9 +49,7 @@ void mergeL(int *line, size_t size)
         }
         xyz++;
     }
-
 }
-
 /**
  * mergeR - slides and merges an array of integers to the right
  * @line: array of integers

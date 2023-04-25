@@ -26,7 +26,7 @@ return (1);
 
 void slide_left(int *line, size_t size)
 {
-int i, j, k;
+int i, j;
 for (i = 0; i < (int)size; i++)
 {
 if (line[i] == 0)
@@ -55,7 +55,8 @@ line[i + 1] = 0;
  * @line: points to an array of integers
  * @size: number of elements in array
  */
-void slide_right(int *line, size_t size);
+void slide_right(int *line, size_t size)
+{
 for (i = 0; i < (int)size; i++)
 {
 if (line[i] == 0)
@@ -77,6 +78,7 @@ if (line[i] == line[i - 1])
 {
 line[i] *= 2;
 line[i - 1] = 0;
+}
 }
 }
 }

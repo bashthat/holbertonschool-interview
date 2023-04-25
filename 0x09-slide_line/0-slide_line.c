@@ -59,7 +59,7 @@ void slide_left(int *line, size_t size)
 void slide_right(int *line, size_t size)
 {
     int x = size - 1, y = size - 2, temp = 0;
-
+    {
     for (; y >= 0; y--)
     {
         if (line[y] == 0)
@@ -78,5 +78,6 @@ void slide_right(int *line, size_t size)
         else
             line[--x] = line[y];
     }
+}
 }
 }

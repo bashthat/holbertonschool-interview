@@ -7,7 +7,7 @@
 #define SLIDE_RIGHT 1
 /*functions*/
 int slide_line(int *line, size_t size, int direction);
-void slide_left(int *line, size_t size);
-void slide_right(int *line, size_t size);
+void mergeL(int *line, size_t size);
+void mergeR(int *line, size_t size);
 /*endif*/
 #endif

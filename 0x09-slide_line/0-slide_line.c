@@ -17,9 +17,9 @@ int slide_line(int *line, size_t size, int direction)
     if (!line || (direction != SLIDE_LEFT && direction != SLIDE_RIGHT))
         return (0);
     if (direction == SLIDE_LEFT)
-        slide_left(line, size);
+        mergeL(line, size);
     else
-        slide_right(line, size);
+        mergeR(line, size);
     return (1);
 }
 
@@ -29,55 +29,53 @@ int slide_line(int *line, size_t size, int direction)
  * @size: size of array
  */
 
-void slide_left(int *line, size_t size)
+void mergeL(int *line, size_t size)
 {
-    int x = 0, y = 1, temp = 0;
+    int xyz = 1, x = 1, q = size -1;
 
-    for (; y < (int)size; y++)
+    while (xyz < (int)size)
     {
-        if (line[y] == 0)
-            continue;
-        temp = line[x];
-        if (temp == line[y])
+        if (line[xyz] == line[xyz - 1])
         {
-            line[x++] = temp + line[y];
-            line[y] = 0;
+            line[x - 1] = line[xyz] + line[xyz - 1];
+            if (line[x - 1] != 0)
+                q--;
+            line[xyz] = 0;
         }
-        else if (temp == 0)
+        else if (line[xyz] != 0)
         {
-            line[x] = line[y];
-            line[y] = 0;
+            line[x] = line[xyz];
+            x++;
         }
-        else
-            line[++x] = line[y];
+        xyz++;
     }
+
+}
+
 /**
- * slide_right - slides and merges an array of integers to the right
+ * mergeR - slides and merges an array of integers to the right
  * @line: array of integers
  * @size: size of array
-*/
-void slide_right(int *line, size_t size)
+ */
+
+void mergeR(int *line, size_t size)
 {
-    int x = size - 1, y = size - 2, temp = 0;
+    int xyz = size - 2, x = size - 2, q = 0;
+
+    while (xyz >= 0)
     {
-    for (; y >= 0; y--)
-    {
-        if (line[y] == 0)
-            continue;
-        temp = line[x];
-        if (temp == line[y])
+        if (line[xyz] == line[xyz + 1])
         {
-            line[x--] = temp + line[y];
-            line[y] = 0;
+            line[x + 1] = line[xyz] + line[xyz + 1];
+            if (line[x + 1] != 0)
+                q++;
+            line[xyz] = 0;
         }
-        else if (temp == 0)
+        else if (line[xyz] != 0)
         {
-            line[x] = line[y];
-            line[y] = 0;
+            line[x] = line[xyz];
+            x--;
         }
-        else
-            line[--x] = line[y];
+        xyz--;
     }
-}
-}
 }

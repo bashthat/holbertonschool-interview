@@ -60,7 +60,7 @@ void mergeL(int *line, size_t size)
 
 void mergeR(int *line, size_t size)
 {
-    int xyz = size - 2, x = size - 2, q = 0;
+    int xyz = size - 2, x = size - 1, q = 0;
 
     while (xyz >= 0)
     {

@@ -31,7 +31,7 @@ int slide_line(int *line, size_t size, int direction)
 
 void mergeL(int *line, size_t size)
 {
-    int xyz = 1, x = 1, q = size -1;
+    int xyz = 1, x = 0, q = size -1;
 
     while (xyz < (int)size)
     {

@@ -1,102 +1,82 @@
 #include "slide_line.h"
-#include <stdio.h>
-#include <stdlib.h>
-
 
 /**
  * slide_line - slides and merges an array of integers
- * @line: points to an array
- * @size: elements in array
- * @direction: SLIDE_LEFT or SLIDE_RIGHT
- * Return: one or zero depending on the hero
+ * @line: points to an array of integers
+ * @size: number of elements in array
+ * @direction: direction to slide and merge
+ * Return: 1 upon success, or 0 upon failure
  */
-
 int slide_line(int *line, size_t size, int direction)
 {
-int x, y;
 if (direction == SLIDE_LEFT)
-{
-for (x = 0; x < (int)size; x++)
-{
-if (line[x] == 0)
-{
-for (y = x + 1; y < (int)size; y++)
-{
-if (line[y] != 0)
-{
-line[x] = line[y];
-line[y] = 0;
-break;
-}
-}
-}
-}
-for (x = 0; x < (int)size - 1; x++)
-{
-if (line[x] == line[x + 1])
-{
-line[x] = line[x] + line[x + 1];
-line[x + 1] = 0;
-}
-}
-for (x = 0; x < (int)size; x++)
-{
-if (line[x] == 0)
-{
-for (y = x + 1; y < (int)size; y++)
-{
-if (line[y] != 0)
-{
-line[x] = line[y];
-line[y] = 0;
-break;
-}
-}
-}
-}
-return (1);
-}
+slide_left(line, size);
 else if (direction == SLIDE_RIGHT)
+slide_right(line, size);
+else
+return (0);
+return (1);
+}
+
+/**
+ * slide_left - slides and merges an array of integers to the left
+ * @line: points to an array of integers
+ * @size: number of elements in array
+ */
+
+void slide_left(int *line, size_t size)
 {
-for (x = (int)size - 1; x >= 0; x--)
+int i, j, k;
+for (i = 0; i < (int)size; i++)
 {
-if (line[x] == 0)
+if (line[i] == 0)
 {
-for (y = x - 1; y >= 0; y--)
+for (j = i + 1; j < (int)size; j++)
 {
-if (line[y] != 0)
+if (line[j] != 0)
 {
-line[x] = line[y];
-line[y] = 0;
+line[i] = line[j];
+line[j] = 0;
 break;
 }
 }
 }
 }
-for (x = (int)size - 1; x > 0; x--)
+for (i = 0; i < (int)size; i++)
 {
-if (line[x] == line[x - 1])
+if (line[i] == line[i + 1])
 {
-line[x] = line[x] + line[x - 1];
-line[x - 1] = 0;
+line[i] *= 2;
+line[i + 1] = 0;
 }
 }
-for (x = (int)size - 1; x >= 0; x--)
+/**
+ * slide_right - slides and merges an array of integers to the right
+ * @line: points to an array of integers
+ * @size: number of elements in array
+ */
+void slide_right(int *line, size_t size);
+for (i = 0; i < (int)size; i++)
 {
-if (line[x] == 0)
+if (line[i] == 0)
 {
-for (y = x - 1; y >= 0; y--)
+for (j = i + 1; j < (int)size; j++)
 {
-if (line[y] != 0)
+if (line[j] != 0)
 {
-line[x] = line[y];
-line;
+line[i] = line[j];
+line[j] = 0;
+break;
 }
 }
 }
 }
-return (1);
+for (i = (int)size - 1; i >= 0; i--)
+{
+if (line[i] == line[i - 1])
+{
+line[i] *= 2;
+line[i - 1] = 0;
 }
-return (0);
 }
-// Path: holbertonschool-interview\0x09-slide_line\slide_line.h
+}
